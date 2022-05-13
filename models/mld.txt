@@ -1,0 +1,40 @@
+//MLD
+Heritage en MLD
+1ere Methode
+-SingleTable:Toutes les classes qui participent a l'heritage seront réunis 
+dans une seule Table
+exemple:
+personne(id,nom_complet,role,login,password,grade,martricule,adresse,sexe)
+2eme Methode
+-Joined:Cree autant de table que de classe mais la cle de la classe mere
+migre comme cle etrangere au niveau des classes filles 
+personne(id,nom_complet,role)
+
+user(login,password,#personne_id)
+professeur(grade,#personne_id)
+rp(#personne_id)
+ac(#personne_id)
+etudiant(martricule,adresse,sexe,#personne_id)
+
+//Les relations en MLD:c'est la cle du faible qui migre vers le fort
+OneToMany->ManyToOne
+annee(id,libelle)
+inscription(#annee_id,#ac_id,#etudiant_id,#classe_id)
+ManyToMany->ManyToMany=>on cree une table
+classe(id,libelle,filiere,niveau)
+professeur_classe(#classe_id,#personne_id)=>approche SingleTable
+professeur()=>il n'a pas d'attribut
+
+//Type de Requete
+les requetes de mis a jour ils retournent tjrs un entier et le nbr de ligne modifiée
+Insert
+Update
+Delete
+les requete select retournent des donnes(objet,tableau)
+select
+//Interface 
+lorsqu'on a un ensemble de classe qui partage les memes methodes et qui ne sont pas du meme type on utilise une interface 
+
+
+
+
